@@ -2,18 +2,22 @@ from django.urls import path, include
 from rest_framework import routers
 
 from cinema.views import (CinemaHallViewSet,
-                          GenerViewSet,
+                          GenreViewSet,
                           ActorViewSet,
                           MovieViewSet,
                           MovieSessionViewSet,)
 
 router = routers.DefaultRouter()
 
-router.register("cinema_halls", CinemaHallViewSet)
-router.register("genres", GenerViewSet)
-router.register("actors", ActorViewSet)
-router.register("movies", MovieViewSet)
-router.register("movie_sessions", MovieSessionViewSet)
+router.register("cinema_halls", CinemaHallViewSet, basename="cinema_hall")
+router.register("genres", GenreViewSet, basename="genre")
+router.register("actors", ActorViewSet, basename="actor")
+router.register("movies", MovieViewSet, basename="movie")
+router.register(
+    "movie_sessions",
+    MovieSessionViewSet,
+    basename="movie_session"
+)
 
 urlpatterns = [
     path("", include(router.urls))

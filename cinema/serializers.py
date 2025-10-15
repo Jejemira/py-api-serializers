@@ -35,7 +35,7 @@ class ActorSerializer(serializers.ModelSerializer):
                   "full_name")
 
     def get_full_name(self, obj):
-        return str(obj)
+        return f"{obj.first_name} {obj.last_name}"
 
 
 class MovieSerializer(serializers.ModelSerializer):
